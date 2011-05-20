@@ -10,7 +10,7 @@ Add a "Subscribe to Newsletter" widget to your WordPress powered website that wi
 
 == Description ==
 
-Add this widget to your site to allow your visitors to sign up to your e-newsletter and email marketing campaigns, sent using the dotMailer email marketing system. The email address of your new subscriber will be added to the dotMailer Address Book you specify within your Settings in Wordpress. If you’re not already a dotMailer user you can find out more about dotMailer at http://www.dotmailer.co.uk.
+Add this widget to your site to allow your visitors to sign up to your e-newsletter and email marketing campaigns, sent using the dotMailer email marketing system. The email address of your new subscriber will be added to the dotMailer Address Book you specify within your Settings in Wordpress. If you're not already a dotMailer user you can find out more about dotMailer at http://www.dotmailer.co.uk.
 
 == Installation ==
 
