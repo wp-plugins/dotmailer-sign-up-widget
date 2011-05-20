@@ -60,7 +60,7 @@ function manage_news_letter()
     <p>Enter your email below to receive our newsletter.</p>
     
     <form id="dotMailer_news_letter" method="post" style="margin-top:5px;">
-        <input type="text" id="dotMailer_email" name="dotMailer_email" /><img src="<?php echo(plugins_url().'/dotmailer/ajax-loader.gif') ?>" id="ajax-loader" style="display:none">
+        <input type="text" id="dotMailer_email" name="dotMailer_email" /><img src="<?php echo(plugins_url().'/dotmailer-sign-up-widget/ajax-loader.gif') ?>" id="ajax-loader" style="display:none">
         <br/><div id="dotMailer_status_div"></div>
         <input type="submit"  name="submit" value="Subscribe" style="margin-top:5px;">
 		<p>Powered by <a href="http://www.dotmailer.co.uk">dotMailer</a></p>
@@ -85,7 +85,7 @@ function manage_news_letter()
 
     			jQuery.ajax({
     				type: "POST",
-    				url: "<?php echo (plugins_url().'/dotmailer/update.php') ?>",
+    				url: "<?php echo (plugins_url().'/dotmailer-sign-up-widget/update.php') ?>",
     				data: "dotmailer_email=" + email,
     				success: function(data){
     					jQuery("#dotMailer_status_div").html(data);
