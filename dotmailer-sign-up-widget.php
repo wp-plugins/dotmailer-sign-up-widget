@@ -163,13 +163,18 @@ function dotMailer_settings_page() {
       wp_head();
       echo '</head>';
 
-
-        
+		$messaderror = "";
+      $saved = "";  
     $user_name =  get_option('dotmailer_username');
     $password  =  get_option('dotmailer_password');
     $addressbook = get_option('dotmailer_address_book');
     $datafields = get_option('dotmailer_datafields');
-
+  if( isset( $_POST['get_address_book'] ) && ($_POST['dotmailer_username'] == '' || $_POST['dotmailer_password'] != '') ){
+	  
+	  $messaderror = "Credentials cannot be empty";
+	  
+	  
+	  }
 
     if( isset( $_POST['get_address_book'] ) && $_POST['dotmailer_username'] != '' && $_POST['dotmailer_password'] != '' )
     {      update_option( 'dotmailer_username', $_POST['dotmailer_username']  );
@@ -197,6 +202,8 @@ function dotMailer_settings_page() {
      
        if (isset ($_POST['datafields'] )){ update_option( 'dotmailer_datafields', $_POST['datafields']  );}else
        {update_option( 'dotmailer_datafields',"");}
+	   
+	   
     }
 
 
@@ -221,7 +228,11 @@ function dotMailer_settings_page() {
 <?php if( isset($AddressBookR ) && $AddressBookR === FALSE ): ?>
 <p style="color:red;">Invalid login. Please verify your API credentials and try again.</p>
 <?php endif; ?>
+<?php
+if ($saved !="") echo $saved;
+ if ($messaderror !="") echo $messaderror;
 
+?>
 
             </td>
         </tr>
