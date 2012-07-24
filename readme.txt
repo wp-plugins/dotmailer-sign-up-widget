@@ -3,8 +3,8 @@ Contributors: dotMailer
 Donate link: http://www.dotmailer.co.uk
 Tags: email marketing, newsletter sign-up
 Requires at least: 2.9.2
-Tested up to: 2.9.2
-Stable tag: trunk
+Tested up to: 3.4.1
+Stable tag: 1.1
 
 Add a "Subscribe to Newsletter" widget to your WordPress powered website that will insert your contact in one of your dotMailer Address Books.
 
@@ -20,16 +20,17 @@ Add this widget to your site to allow your visitors to sign up to your e-newslet
 4. Select 'dotMailer Sign Up Widget'.
 5. You will be prompted to enter your API key details, these can be obtained in your dotMailer account by doing the following:
 	1. Navigate to the 'My Account' section in dotMailer.
-	1. Click 'Manage Users'.
-	1. Select the API tab and click Add Account
-	1. Copy the generated email address without editing it.
-	1. Enter in a password.
-	1. This will be your API Email and API Password.
+	2. Click 'Manage Users'.
+	3. Select the API tab and click Add Account
+	4. Copy the generated email address without editing it.
+	5. Enter in a password.
+	6. This will be your API Email and API Password.
 
 6. Click 'Connect and list Address Books'.
 7. This will display a list of address books in your dotMailer account.
 8. Select the address book you wish contacts to be uploaded into (Only one may currently be selected).
-9. Click save settings.  
+9. If you wish, you can include datafields in the form (Firstname - Lastname - Fullname are available).Datafields will NOT be required input fields.
+10. Click save settings.  
 
 The widget can now be added to your website. To do this follow the steps below:
 
@@ -53,7 +54,7 @@ A. Check you have followed the steps exactly as above and that your API email an
 
 == Changelog ==
 
-The current version of this plugin is 1.0.  No changes have currently been made.
+The current version of this plugin is 2.0. 
 
 == Upgrade Notice ==
 == Arbitrary section ==

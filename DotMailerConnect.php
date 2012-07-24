@@ -3,7 +3,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
+ 
 class DotMailerConnect
 {
 
@@ -45,28 +45,50 @@ class DotMailerConnect
     }
 
 
-    function AddContactToAddressBook( $email , $addressBookId )
+    function AddContactToAddressBook( $email , $addressBookId,$datafields = "" )
     {
         $AudienceType = "B2C";
         $OptInType    = "Single";
         $EmailType    = "Html";
-
-        $contact = array( 'Email' => $email ,"AudienceType" => $AudienceType,"OptInType" => $OptInType,
+         if ($datafields == "")
+       { $contact = array( 'Email' => $email ,"AudienceType" => $AudienceType,"OptInType" => $OptInType,
                           'EmailType' => $EmailType , "ID" => -1 );
 
-        $params = array( 'username' => $this->username,
+        
+       }else{
+           
+             foreach ($datafields as $field=>$value)
+           {if ($field == "First name:"){$field = "FIRSTNAME";}
+           if ($field == "Last name:"){$field = "LASTNAME";}
+           
+               if ($field == "Full name:"){$field = "FULLNAME";}
+            
+  $Keys[] = $field;
+  $Values[] =  new SoapVar($value,XSD_STRING,"string","http://www.w3.org/2001/XMLSchema");  
+  
+         
+           
+           }
+           
+          
+  $Fields = array("Keys"=>$Keys,"Values"=>$Values);  
+  
+  $contact = array( 'Email' => $email ,"AudienceType" => $AudienceType,"OptInType" => $OptInType,
+                          'EmailType' => $EmailType , "ID" => -1,"DataFields"=>$Fields );
+       }
+         $params = array( 'username' => $this->username,
                          'password' => $this->password,
                          'contact'  => $contact,
                          'addressbookId' => $addressBookId
                        );
-
         try 
         {
             $result = $this->client->AddContactToAddressBook( $params );
             return $result; 
         }
         catch( Exception $ex )
-        {
+        {    //echo $ex->getMessage();
+       
             return false; 
         }
 
