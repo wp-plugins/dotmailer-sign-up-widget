@@ -202,6 +202,7 @@ function dotMailer_settings_page() {
      
        if (isset ($_POST['datafields'] )){ update_option( 'dotmailer_datafields', $_POST['datafields']  );}else
        {update_option( 'dotmailer_datafields',"");}
+	   $saved = "Saved!";
 	   
 	   
     }
