@@ -230,7 +230,7 @@ function dotMailer_settings_page() {
 <p style="color:red;">Invalid login. Please verify your API credentials and try again.</p>
 <?php endif; ?>
 <?php
-if ($saved !="") echo $saved;
+
  if ($messaderror !="") echo $messaderror;
 
 ?>
@@ -248,6 +248,10 @@ if ($saved !="") echo $saved;
         <br/><br/><input type="submit" class="button-primary" name="get_address_book" value="<?php _e('Connect and list Address Books') ?>" />
     </td>
         </tr>
+        <?php
+        if ($saved !="") echo $saved;
+		
+		?>
 
         <?php  if( isset($_POST['get_address_book']) && $user_name != '' && $password != '' && $AddressBookR !== FALSE ): ?>
 
