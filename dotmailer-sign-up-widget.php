@@ -3,7 +3,7 @@
 Plugin Name: dotMailer Sign Up Widget
 Plugin URI: http://www.dotmailer.co.uk/
 Description: Add a "Subscribe to Newsletter" widget to your Wordpress powered website that will insert your contact in one of your dotMailer Address Book (you can select this in Settings > dotMailer)
-Version: 1.2
+Version: 1.1
 Author: Akis Loumpourdis
 Author URI: http://www.dotmailer.co.uk/
 */
@@ -163,7 +163,7 @@ function dotMailer_settings_page() {
       wp_head();
       echo '</head>';
 
-
+		$messaderror = "";
       $saved = "";  
     $user_name =  get_option('dotmailer_username');
     $password  =  get_option('dotmailer_password');

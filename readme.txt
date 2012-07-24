@@ -4,7 +4,7 @@ Donate link: http://www.dotmailer.co.uk
 Tags: email marketing, newsletter sign-up
 Requires at least: 2.9.2
 Tested up to: 3.4.1
-Stable tag: 1.2
+Stable tag: 1.1
 
 Add a "Subscribe to Newsletter" widget to your WordPress powered website that will insert your contact in one of your dotMailer Address Books.
 
