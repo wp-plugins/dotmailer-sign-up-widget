@@ -67,7 +67,7 @@ A. There is an alternative way. Click on 'Screen Options' in the top right-hand 
 4. Reordering address books
 5. Adding the form to your website
 6. Click on screen options
-7. Select  'Enable accessibility mode'.Add' links will appear on inactive widgets and 'Edit' links will appear on active ones
+7. Select  'Enable accessibility mode'. 'Add' links will appear on inactive widgets and 'Edit' links will appear on active ones
 
 == Changelog ==
 
