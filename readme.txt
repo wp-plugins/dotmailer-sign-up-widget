@@ -18,15 +18,15 @@ Add the dotMailer sign-up form plugin to your site to allow your visitors to sig
 
 If you already have v1 installed, a message will pop up in the admin area of your WordPress account informing you that a new version is available. Simply update from there.
 
-If you don’t already have v1, log into your WordPress account and follow these steps:
+If you don't already have v1, log into your WordPress account and follow these steps:
 
-1. Go to ‘Plugins’ in the left-hand menu
-2. Select ‘Add New’
-3. Search for ‘dotMailer Sign Up Widget’
-4. Click on ‘Install Now’
-5. When installed, click on ‘Activate Plugin’
+1. Go to 'Plugins' in the left-hand menu
+2. Select 'Add New'
+3. Search for 'dotMailer Sign Up Widget'
+4. Click on 'Install Now'
+5. When installed, click on 'Activate Plugin'
 
-The plugin will appear as ‘dotMailer’ in your left-hand menu.
+The plugin will appear as 'dotMailer' in your left-hand menu.
 
 For more detailed information on installation, find it at (https://dotmailer.zendesk.com/entries/23228992-Using-the-dotMailer-WordPress-sign-up-form-plugin-v2#install)
 
@@ -39,7 +39,7 @@ A. It is compatible with versions 3.0 or higher.
 Q. My site is hosted by WordPress.com. Will the plugin work for me?
 A. No. The plugin can only be uploaded to the installed version of WordPress (WordPress.org), not the hosted version (WordPress.com).
 
-Q. I’m receiving an error about the ‘SoapClient’ not being found. How do I fix this?
+Q. I'm receiving an error about the 'SoapClient' not being found. How do I fix this?
 A. You will need to enable the SOAP extension in the php.ini file (your installed PHP configuration file). This is typically done by uncommenting the following line:
 
 extension=php_soap.dll
@@ -61,12 +61,13 @@ A. There is an alternative way. Click on 'Screen Options' in the top right-hand 
 
 == Screenshots ==
 
-1.The plugin will appear as ‘dotMailer’ in your left-hand menu
-2.Selecting an address book3.Changing address book visibility.
-4.Reordering address books.
-5.Adding the form to your website.
-6.Click on screen options.
-7.Select  'Enable accessibility mode'.Add' links will appear on inactive widgets and 'Edit' links will appear on active ones.
+1. The plugin will appear as 'dotMailer' in your left-hand menu.
+2. Selecting an address book.
+3. Changing address book visibility.
+4. Reordering address books.
+5. Adding the form to your website.
+6. Click on screen options.
+7. Select  'Enable accessibility mode'.Add' links will appear on inactive widgets and 'Edit' links will appear on active ones.
 
 == Changelog ==
 
@@ -81,6 +82,6 @@ The current version of this plugin is 2.0.
 = 1.1 =
 * Fixed an error thrown 
 
-== Arbitrary section ==
+
 
 
