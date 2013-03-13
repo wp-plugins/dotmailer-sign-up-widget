@@ -50,7 +50,7 @@ Depending on your host, you may not have access to this file. If you don't, you 
 = Q. Can I select more than one address book to sign contacts up to? =
 A. Yes you can. This latest version of the plugin allows you to put addresses into multiple address books.
 
-=Q. Can contacts who have previously unsubscribed from my mailing lists re-subscribe through the plugin?=
+= Q. Can contacts who have previously unsubscribed from my mailing lists re-subscribe through the plugin? =
 A. Yes they can.
 
 = Q. My contacts are not appearing in my address book. Why is this? =
