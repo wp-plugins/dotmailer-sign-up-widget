@@ -1,62 +1,87 @@
-=== dotMailer Sign Up Widget ===
+=== dotMailer Sign-up Form Widget ===
 Contributors: dotMailer
 Donate link: http://www.dotmailer.co.uk
 Tags: email marketing, newsletter sign-up
-Requires at least: 2.9.2
-Tested up to: 3.4.1
-Stable tag: 1.1
+Requires at least: 3.0
+Tested up to: 3.5.1
+Stable tag: 2.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Add a "Subscribe to Newsletter" widget to your WordPress powered website that will insert your contact in one of your dotMailer Address Books.
+Add a "Subscribe to Newsletter" widget to your WordPress powered website.
 
 == Description ==
 
-Add this widget to your site to allow your visitors to sign up to your e-newsletter and email marketing campaigns, sent using the dotMailer email marketing system. The email address of your new subscriber will be added to the dotMailer Address Book you specify within your Settings in Wordpress. If you're not already a dotMailer user you can find out more about dotMailer at http://www.dotmailer.co.uk.
+Add the dotMailer sign-up form plugin to your site to allow your visitors to sign up to your newsletter and email marketing campaigns, sent using the dotMailer email marketing system. The email address of your new subscriber can be added to one or moredotMailer address books, which you can specify within your settings in WordPress. If you're not already a dotMailer user you can find out more about dotMailer at (http://www.dotmailer.co.uk)
 
 == Installation ==
 
-1. Search for the plugin 'dotMailer Sign Up Widget'.
-2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Click Settings in your WordPress admin section.
-4. Select 'dotMailer Sign Up Widget'.
-5. You will be prompted to enter your API key details, these can be obtained in your dotMailer account by doing the following:
-	1. Navigate to the 'My Account' section in dotMailer.
-	2. Click 'Manage Users'.
-	3. Select the API tab and click Add Account
-	4. Copy the generated email address without editing it.
-	5. Enter in a password.
-	6. This will be your API Email and API Password.
+If you already have v1 installed, a message will pop up in the admin area of your WordPress account informing you that a new version is available. Simply update from there.
 
-6. Click 'Connect and list Address Books'.
-7. This will display a list of address books in your dotMailer account.
-8. Select the address book you wish contacts to be uploaded into (Only one may currently be selected).
-9. If you wish, you can include datafields in the form (Firstname - Lastname - Fullname are available).Datafields will NOT be required input fields.
-10. Click save settings.  
+If you don’t already have v1, log into your WordPress account and follow these steps:
 
-The widget can now be added to your website. To do this follow the steps below:
+1. Go to ‘Plugins’ in the left-hand menu
+2. Select ‘Add New’
+3. Search for ‘dotMailer Sign Up Widget’
+4. Click on ‘Install Now’
+5. When installed, click on ‘Activate Plugin’
 
-1. Select Appearance in your WordPress admin section
-2. Select Widgets
-3. Locate the dotMailer Sign Up Widget in your available widgets
-4.    Drag the widget where you want it to appear on your WordPress powered website.
+The plugin will appear as ‘dotMailer’ in your left-hand menu.
+
+For more detailed information on installation, find it at (https://dotmailer.zendesk.com/entries/23228992-Using-the-dotMailer-WordPress-sign-up-form-plugin-v2#install)
+
 
 == Frequently Asked Questions ==
 
+Q. Which WordPress versions is the plugin compatible with?
+A. It is compatible with versions 3.0 or higher.
+
+Q. My site is hosted by WordPress.com. Will the plugin work for me?
+A. No. The plugin can only be uploaded to the installed version of WordPress (WordPress.org), not the hosted version (WordPress.com).
+
+Q. I’m receiving an error about the ‘SoapClient’ not being found. How do I fix this?
+A. You will need to enable the SOAP extension in the php.ini file (your installed PHP configuration file). This is typically done by uncommenting the following line:
+
+extension=php_soap.dll
+
+
+Depending on your host, you may not have access to this file. If you don't, you should contact your host to ask them to do this for you.
+
 Q. Can I select more than one address book to sign contacts up to?
+A. Yes you can. This latest version of the plugin allows you to put addresses into multiple address books.
 
-A. Currently you may only select one Address Book to place contacts into.
+Q. Can contacts who have previously unsubscribed from my mailing lists re-subscribe through the plugin?
+A. Yes they can.
 
-Q. My contacts are not appearing in my Address Book?
+Q. My contacts are not appearing in my address book. Why is this?
+A. Check you have followed the installation steps correctly and that your API email and API password appear exactly as they do in your dotMailer account. Remember that the API email is automatically generated and should not be changed. 
 
-A. Check you have followed the steps exactly as above and that your API email and API password appear exactly as they do in your dotMailer account.  Remember that the API email is automatically generated and should not be changed.
-
+Q. I can't drag and drop the widget from the 'Available Widgets' area. What should I do?
+A. There is an alternative way. Click on 'Screen Options' in the top right-hand corner and select 'Enable accessibility mode' which appears over to the left. 'Add' links will then appear on inactive widgets and 'Edit' links will appear on active ones. Clicking on 'Add' will allow you to choose where you want to place the widget on your page. 
 
 == Screenshots ==
+
+1.The plugin will appear as ‘dotMailer’ in your left-hand menu.
+2.Selecting an address book.
+3.Changing address book visibility.
+4.Reordering address books.
+5.Adding the form to your website.
+6.Click on screen options.
+7.Select  'Enable accessibility mode'.Add' links will appear on inactive widgets and 'Edit' links will appear on active ones.
 
 == Changelog ==
 
 The current version of this plugin is 2.0. 
 
 == Upgrade Notice ==
+
+= 2.0 =
+* Using the new Settings API.
+* Extra features added.
+
+= 1.1 =
+* Fixed an error thrown 
+
 == Arbitrary section ==
 
 
