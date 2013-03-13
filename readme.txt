@@ -82,6 +82,6 @@ The current version of this plugin is 2.0.
 = 1.1 =
 * Fixed an error thrown 
 
-== Arbitrary section ==
+
 
 
