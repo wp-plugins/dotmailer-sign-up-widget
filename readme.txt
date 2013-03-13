@@ -61,13 +61,13 @@ A. There is an alternative way. Click on 'Screen Options' in the top right-hand 
 
 == Screenshots ==
 
-1. The plugin will appear as 'dotMailer' in your left-hand menu.
-2. Selecting an address book.
-3. Changing address book visibility.
-4. Reordering address books.
-5. Adding the form to your website.
-6. Click on screen options.
-7. Select  'Enable accessibility mode'.Add' links will appear on inactive widgets and 'Edit' links will appear on active ones.
+1. The plugin will appear as 'dotMailer' in your left-hand menu
+2. Selecting an address book
+3. Changing address book visibility
+4. Reordering address books
+5. Adding the form to your website
+6. Click on screen options
+7. Select  'Enable accessibility mode'.Add' links will appear on inactive widgets and 'Edit' links will appear on active ones
 
 == Changelog ==
 
