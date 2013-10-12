@@ -76,7 +76,7 @@ The current version of this plugin is 2.1.
 == Upgrade Notice ==
 
 = 2.1 =
-* Smashed out a fix for Jquery Min File, upgraded version to fix conflict
+* Fix for Jquery Mini File, upgraded version to fix conflict
 
 = 2.0 =
 * Using the new Settings API.
