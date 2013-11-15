@@ -142,7 +142,8 @@ class DM_Widget extends WP_Widget {
             }
         }
         ?> 
-        <div>
+        <?php /*?>PG FIX - Unclosed div tag<?php */?>
+        <?php /*?><div><?php */?>
             <?php
             $messages_options = get_option('dm_API_messages');
 
@@ -157,14 +158,10 @@ class DM_Widget extends WP_Widget {
 
             echo $before_widget;
 
-// Display the widget title 
+			// Display the widget title 
             if ($form_header)
                 echo $before_title . $form_header . $after_title;
             ?> 
-
-
-
-
 
             <form id="dotMailer_news_letter"  style="margin:5px 0 10px 0;" method="post" action =" <?php echo $_SERVER['PHP_SELF']; ?>" >
                 <p>Please complete the fields below:</p>
@@ -185,9 +182,6 @@ class DM_Widget extends WP_Widget {
                         echo "<p class='error_message'>" . $formErrors[$value['name']] . "</p>";
                     }
                 }
-
-
-
 
                 $dmaddressbooks = get_option('dm_API_address_books');
 
@@ -226,10 +220,6 @@ class DM_Widget extends WP_Widget {
                     echo $success_message;
                 }
                 ?> 
-
-
-
-
                 <?php ?>
             </div>
 
@@ -247,4 +237,4 @@ class DM_Widget extends WP_Widget {
         }
 
     }
-    ?>
+    ?> 

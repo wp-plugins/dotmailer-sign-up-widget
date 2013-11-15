@@ -3,7 +3,7 @@
   Plugin Name: dotMailer Sign-up Form
   Plugin URI:  http://www.dotmailer.co.uk/api/prebuilt_integrations/wordpress.aspx
   Description: Add a "Subscribe to Newsletter" widget to your WordPress powered website that will insert your contact in one of your dotMailer address book.
-  Version: 2.1
+  Version: 3.0
   Author: Ben Staveley
   Author URI: http://www.dotmailer.co.uk/
  */
@@ -52,18 +52,25 @@ function dotMailer_widget_uninstall() {
     delete_option('dm_API_data_fields');
 }
 
+/*PG FIX*/
+
 add_action('admin_enqueue_scripts', 'settings_head_scripts');
-add_action('wp_enqueue_scripts', 'widget_head');
+add_action('init', 'widget_head_registers', 9998);
+add_action('wp_enqueue_scripts', 'widget_head', 9999);
 add_action('widgets_init', 'register_my_widget');
 
 function register_my_widget() {
     register_widget('DM_Widget');
 }
 
-function widget_head() {
+function widget_head_registers() {
+	wp_register_script( 'jquery', ( "//code.jquery.com/jquery-1.9.0.js" ), false);
+	wp_register_script( 'widgetUI', ( "//code.jquery.com/ui/1.10.0/jquery-ui.js" ), 'jquerysc');	
+}
 
-    wp_enqueue_script('jquerysc', "http://code.jquery.com/jquery-1.9.0.js");
-    wp_enqueue_script('widgetUI', "http://code.jquery.com/ui/1.10.0/jquery-ui.js");
+function widget_head() {	
+	wp_enqueue_script('jquery');	
+    wp_enqueue_script('widgetUI');	
     wp_enqueue_script('widgetjs', plugins_url("/js/widget.js", ( __FILE__)));
     wp_register_style('widgetCss', "http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css");
     wp_register_style('main', plugins_url("/css/dotmailer.css", ( __FILE__)));

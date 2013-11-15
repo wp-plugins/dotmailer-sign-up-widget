@@ -1,5 +1,5 @@
-jQuery.noConflict();  
-
+/*PG FIX*/
+/*jQuery.noConflict();*/  
 jQuery(document).ready(function(){
 
     jQuery(".Date").datepicker({

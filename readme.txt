@@ -4,7 +4,7 @@ Donate link: http://www.dotmailer.co.uk
 Tags: email marketing, newsletter sign-up
 Requires at least: 3.0
 Tested up to: 3.6.1
-Stable tag: 2.1
+Stable tag: 3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,9 +71,12 @@ A. There is an alternative way. Click on 'Screen Options' in the top right-hand 
 
 == Changelog ==
 
-The current version of this plugin is 2.1. 
+The current version of this plugin is 3.0 
 
 == Upgrade Notice ==
+
+= 3.0 =
+* Fix for reported javascript conflicts and styling issues
 
 = 2.1 =
 * Fix for Jquery Mini File, upgraded version to fix conflict
@@ -83,8 +86,4 @@ The current version of this plugin is 2.1.
 * Extra features added.
 
 = 1.1 =
-* Fixed an error thrown 
-
-
-
-
+* Fixed an error thrown
