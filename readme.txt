@@ -71,7 +71,7 @@ A. There is an alternative way. Click on 'Screen Options' in the top right-hand 
 
 == Changelog ==
 
-The current version of this plugin is 3.0 
+The current version of this plugin is 3.1 
 
 == Upgrade Notice ==
 
