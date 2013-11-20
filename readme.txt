@@ -4,7 +4,7 @@ Donate link: http://www.dotmailer.co.uk
 Tags: email marketing, newsletter sign-up
 Requires at least: 3.0
 Tested up to: 3.6.1
-Stable tag: 3.0
+Stable tag: 3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -74,6 +74,9 @@ A. There is an alternative way. Click on 'Screen Options' in the top right-hand 
 The current version of this plugin is 3.0 
 
 == Upgrade Notice ==
+
+= 3.1 =
+* Fix for closing php tag on dm_widget
 
 = 3.0 =
 * Fix for reported javascript conflicts and styling issues

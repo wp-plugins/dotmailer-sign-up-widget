@@ -236,5 +236,4 @@ class DM_Widget extends WP_Widget {
             //***********
         }
 
-    }
-    ?> 
+    } 
