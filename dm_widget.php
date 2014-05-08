@@ -173,15 +173,16 @@ class DM_Widget extends WP_Widget {
                 }
                 ?>
                 <?php
-                if (get_option('dm_API_data_fields') != "")
+                if (get_option('dm_API_data_fields') != "") {
                     $dmdatafields = get_option('dm_API_data_fields');
 
-                foreach ($dmdatafields as $key => $value) {
-                    writeFormLine($value['type'], $value['name'], $value['label'], $value['isRequired']);
-                    if (isset($formErrors[$value['name']])) {
-                        echo "<p class='error_message'>" . $formErrors[$value['name']] . "</p>";
-                    }
-                }
+					foreach ($dmdatafields as $key => $value) {
+						writeFormLine($value['type'], $value['name'], $value['label'], $value['isRequired']);
+						if (isset($formErrors[$value['name']])) {
+							echo "<p class='error_message'>" . $formErrors[$value['name']] . "</p>";
+						}
+					}
+				}
 
                 $dmaddressbooks = get_option('dm_API_address_books');
 
