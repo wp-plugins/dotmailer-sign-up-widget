@@ -1,15 +1,15 @@
 <?php
 /*
   Plugin Name: dotMailer Sign-up Form
-  Plugin URI:  http://www.dotmailer.co.uk/api/prebuilt_integrations/wordpress.aspx
+  Plugin URI: http://www.dotmailer.co.uk/api/prebuilt_integrations/wordpress.aspx
   Description: Add a "Subscribe to Newsletter" widget to your WordPress powered website that will insert your contact in one of your dotMailer address book.
-  Version: 3.0
+  Version: 3.2
   Author: Ben Staveley
-  Author URI: http://www.dotmailer.co.uk/
+  Author URI: http://www.dotmailer.com/
  */
 
 
-/*  Copyright 2013  dotMailer (email : support@dotMailer.co.uk)
+/*  Copyright 2014  dotMailer (email : support@dotMailer.co.uk)
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -29,13 +29,10 @@
 require_once ( plugin_dir_path(__FILE__) . 'functions.php' );
 require_once ( plugin_dir_path(__FILE__) . 'dm_widget.php' );
 register_uninstall_hook(__FILE__, "dotMailer_widget_uninstall");
-register_deactivation_hook(__FILE__, 'dotMailer_widget_deactivate');
+register_activation_hook(__FILE__, 'dotMailer_widget_activate');
 
-function dotMailer_widget_deactivate() {
-    delete_option('dm_API_credentials');
-    delete_option('dm_API_messages');
-    delete_option('dm_API_address_books');
-    delete_option('dm_API_data_fields');
+function dotMailer_widget_activate() {
+	dotMailer_set_initial_messages();
 }
 
 function dotMailer_widget_install() {
@@ -327,6 +324,7 @@ function manage_dm_newsletter() {
     add_action('admin_init', 'plugin_admin_init');
 
     function plugin_admin_init() {
+		if (get_option('dm_API_messages') === false) dotMailer_set_initial_messages();
         register_setting('dm_API_credentials', 'dm_API_credentials', 'dm_API_credentials_validate');
         register_setting('dm_API_messages', 'dm_API_messages', 'dm_API_messages_validate');
         register_setting('dm_API_address_books', 'dm_API_address_books', 'dm_API_books_validate');
@@ -364,81 +362,63 @@ function manage_dm_newsletter() {
         echo "<div class='inside'>";
     }
 
+    function dotMailer_set_initial_messages() {
+    
+		$messages = array(
+			'dm_API_form_title' => 'Subscribe to our newsletter',
+			'dm_API_invalid_email' => 'Please use a valid email address',
+			'dm_API_fill_required' => 'Please fill all the required fields',
+			'dm_API_nobook_message' => 'Please select one newsletter',
+			'dm_API_success_message' => 'You have now subscribed to our newsletter',
+			'dm_API_failure_message' => 'There was a problem signing you up.',
+			'dm_API_subs_button' => 'Subscribe'
+		);		
+		
+		if (!get_option('dm_API_messages')) add_option('dm_API_messages', $messages);
+		
+    }
+    
     function dm_API_form_title_input() {
 
         $options = get_option('dm_API_messages');
-        if (isset($options['dm_API_form_title'])
-        ) {
-            echo "<input id='dm_form_title' name='dm_API_messages[dm_API_form_title]' size='40' type='text' value='{$options['dm_API_form_title']}' />";
-        } else {
-            echo "<input id='dm_form_title' name='dm_API_messages[dm_API_form_title]' size='40' type='text' value='Subscribe to our newsletter'  />";
-        }
+        echo "<input id='dm_form_title' name='dm_API_messages[dm_API_form_title]' size='40' type='text' value='{$options['dm_API_form_title']}' />";
+
     }
 
     function dm_API_invalid_email_input() {
 
         $options = get_option('dm_API_messages');
-        if (isset($options['dm_API_invalid_email'])
-        ) {
-            echo "<input id='dm_invalid_email' name='dm_API_messages[dm_API_invalid_email]' size='40' type='text' value='{$options['dm_API_invalid_email']}' />";
-        } else {
-            echo "<input id='dm_invalid_email' name='dm_API_messages[dm_API_invalid_email]' size='40' type='text' value = 'Please use a valid email address'   />";
-        }
+        echo "<input id='dm_invalid_email' name='dm_API_messages[dm_API_invalid_email]' size='40' type='text' value='{$options['dm_API_invalid_email']}' />";
     }
 
     function dm_API_fill_required_input() {
 
         $options = get_option('dm_API_messages');
-        if (isset($options['dm_API_fill_required'])
-        ) {
-            echo "<input id='dm_fill_required' name='dm_API_messages[dm_API_fill_required]' size='40' type='text' value='{$options['dm_API_fill_required']}' />";
-        } else {
-            echo "<input id='dm_fill_required' name='dm_API_messages[dm_API_fill_required]' size='40' type='text' value='Please fill all the required fields'  />";
-        }
+        echo "<input id='dm_fill_required' name='dm_API_messages[dm_API_fill_required]' size='40' type='text' value='{$options['dm_API_fill_required']}' />";
     }
 
     function dm_API_nobook_message_input() {
 
         $options = get_option('dm_API_messages');
-        if (isset($options['dm_API_nobook_message'])
-        ) {
-            echo "<input id='dm_nobook_message' name='dm_API_messages[dm_API_nobook_message]' size='40' type='text' value='{$options['dm_API_nobook_message']}' />";
-        } else {
-            echo "<input id='dm_nobook_message' name='dm_API_messages[dm_API_nobook_message]' size='40' type='text' value='Please select one newsletter'  />";
-        }
+        echo "<input id='dm_nobook_message' name='dm_API_messages[dm_API_nobook_message]' size='40' type='text' value='{$options['dm_API_nobook_message']}' />";
     }
 
     function dm_API_success_message_input() {
 
         $options = get_option('dm_API_messages');
-        if (isset($options['dm_API_success_message'])
-        ) {
-            echo "<input id='dm_success_message' name='dm_API_messages[dm_API_success_message]' size='40' type='text' value='{$options['dm_API_success_message']}' />";
-        } else {
-            echo "<input id='dm_success_message' name='dm_API_messages[dm_API_success_message]' size='40' type='text' value='You have now subscribed to our newsletter'  />";
-        }
+        echo "<input id='dm_success_message' name='dm_API_messages[dm_API_success_message]' size='40' type='text' value='{$options['dm_API_success_message']}' />";
     }
 
     function dm_API_failure_message_input() {
 
         $options = get_option('dm_API_messages');
-        if (isset($options['dm_API_failure_message'])
-        ) {
-            echo "<input id='dm_failure_message' name='dm_API_messages[dm_API_failure_message]' size='40' type='text' value='{$options['dm_API_failure_message']}' />";
-        } else {
-            echo "<input id='dm_failure_message' name='dm_API_messages[dm_API_failure_message]' size='40' type='text' value='There was a problem signing you up.'  />";
-        }
+        echo "<input id='dm_failure_message' name='dm_API_messages[dm_API_failure_message]' size='40' type='text' value='{$options['dm_API_failure_message']}' />";
     }
 
     function dm_API_subs_button_input() {
 
         $options = get_option('dm_API_messages');
-        if (isset($options['dm_API_subs_button'])
-        ) {
-            echo "<input  id='dm_subs_button' name='dm_API_messages[dm_API_subs_button]' size='40' type='text' value='{$options['dm_API_subs_button']}' />";
-        } else {
-            echo "<input  id='dm_subs_button' name='dm_API_messages[dm_API_subs_button]' size='40' type='text' value='Subscribe'  />";
-        }
+        echo "<input  id='dm_subs_button' name='dm_API_messages[dm_API_subs_button]' size='40' type='text' value='{$options['dm_API_subs_button']}' />";
     }
 
     function dm_API_username_input() {
@@ -947,7 +927,14 @@ function dm_settings_menu_display() {
                                         <p>Capture the email addresses of visitors and put them in your dotMailer address books. You can also collect contact data
                                             field information, too.</p>
 
+                                        <b>What’s new in version 3.2:</b>
 
+                                        <ul style="list-style-type: circle; list-style-position: inside;">
+                                            <li>Fix: Remove warning in the widget if no contact data was saved into the DB</li>
+                                            <li>Fix: Version number confusion</li>
+                                            <li>Mod: Now initial default messages are save automatically to the database during plugin activation, so users need one step less to set it up properly.</li>
+                                            <li>Mod: Now user settings are not deleted on plugin deactivation. Settings are only deleted if you uninstall the plugin.</li>
+                                        </ul>
 
                                         <b>What’s new in version 2.0:</b>
 
