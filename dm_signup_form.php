@@ -3,7 +3,7 @@
   Plugin Name: dotMailer Sign-up Form
   Plugin URI: http://www.dotmailer.co.uk/api/prebuilt_integrations/wordpress.aspx
   Description: Add a "Subscribe to Newsletter" widget to your WordPress powered website that will insert your contact in one of your dotMailer address book.
-  Version: 3.2
+  Version: 3.2.1
   Author: Ben Staveley
   Author URI: http://www.dotmailer.com/
  */
@@ -245,7 +245,7 @@ function manage_dm_newsletter() {
         <h2 style="font-weight: bold; font-size: 1.1em;" class="widgettitle" ><?php echo $form_header; ?></h2>
 
 
-        <form id="dotMailer_news_letter"  style="margin:5px 0 10px 0;" method="post" action =" <?php echo $_SERVER['PHP_SELF']; ?>" >
+        <form id="dotMailer_news_letter" style="margin:5px 0 10px 0;" method="post" action =" <?php the_permalink(); ?>" >
             <p>Please complete the fields below:</p>
             <label for="dotMailer_email">Your email address*:</label></br>
             <input class="email" type="text" id="dotMailer_email" name="dotMailer_email" /> </br>
@@ -421,8 +421,29 @@ function manage_dm_newsletter() {
         echo "<input  id='dm_subs_button' name='dm_API_messages[dm_API_subs_button]' size='40' type='text' value='{$options['dm_API_subs_button']}' />";
     }
 
+    function dm_collect_stat() {
+    
+		$stat_array = array();
+		$options = get_option('dm_API_credentials');
+		$posts_no = 0;
+		$post_types = get_post_types();
+		
+		foreach ( $post_types as $post_type ) {
+			$postc = wp_count_posts($post_type);
+			if ( !in_array ( $post_type, array ("attachment", "revision", "nav_menu_item") ) ) $posts_no += $postc->publish;
+		}
+    
+		$stat_array["wpurl"] = get_bloginfo("url");
+		$stat_array["wpposts"] = $posts_no;
+		$stat_array["wpapi"] = $options['dm_API_username'];
+    
+		return $stat_array;
+    
+    }
+        
     function dm_API_username_input() {
         $options = get_option('dm_API_credentials');
+        
         if (isset($options['dm_API_username'])
         ) {
             echo "<input id='dm_username' name='dm_API_credentials[dm_API_username]' size='40' type='text' value='{$options['dm_API_username']}' />";

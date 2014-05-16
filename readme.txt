@@ -4,7 +4,7 @@ Donate link: http://www.dotmailer.co.uk
 Tags: email marketing, newsletter sign-up
 Requires at least: 3.0
 Tested up to: 3.8.3
-Stable tag: 3.2
+Stable tag: 3.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,18 +71,25 @@ A. There is an alternative way. Click on 'Screen Options' in the top right-hand 
 
 == Changelog ==
 
+3.2.1 (2014-05-16)
+
+* Fix: Now the user stays on the same page instead of being redirected to the home page after submission
+
+
 3.2 (2014-05-02)
 
 * Fix: Remove warning in the widget if no contact data was saved into the DB
 * Fix: Version number confusion
-* Mod: Now initial default messages are save automatically to the database during plugin activation, so users need one step less to set it up properly.
+* Mod: Now initial default messages are saved automatically to the database during plugin activation, so users need one step less to set it up properly.
 * Mod: Now user settings are not deleted on plugin deactivation. Settings are only deleted if you uninstall the plugin.
 
 
 == Upgrade Notice ==
 
-= 3.2 =
+= 3.2.1 =
+* Fix: Now the user stays on the same page instead of being redirected to the home page after submission
 
+= 3.2 =
 * Fix: Remove warning in the widget if no contact data was saved into the DB
 * Fix: Version number confusion
 * Mod: Now initial default messages are save automatically to the database during plugin activation, so users need one step less to set it up properly.

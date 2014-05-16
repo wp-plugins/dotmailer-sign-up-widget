@@ -163,7 +163,7 @@ class DM_Widget extends WP_Widget {
                 echo $before_title . $form_header . $after_title;
             ?> 
 
-            <form id="dotMailer_news_letter"  style="margin:5px 0 10px 0;" method="post" action =" <?php echo $_SERVER['PHP_SELF']; ?>" >
+            <form id="dotMailer_news_letter" style="margin:5px 0 10px 0;" method="post" action =" <?php the_permalink(); ?>" >
                 <p>Please complete the fields below:</p>
                 <label for="dotMailer_email">Your email address*:</label></br>
                 <input class="email" type="text" id="dotMailer_email" name="dotMailer_email" /> </br>
