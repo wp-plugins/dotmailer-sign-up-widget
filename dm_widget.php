@@ -163,7 +163,7 @@ class DM_Widget extends WP_Widget {
                 echo $before_title . $form_header . $after_title;
             ?> 
 
-            <form id="dotMailer_news_letter"  style="margin:5px 0 10px 0;" method="post" action =" <?php echo $_SERVER['PHP_SELF']; ?>" >
+            <form id="dotMailer_news_letter" style="margin:5px 0 10px 0;" method="post" action =" <?php the_permalink(); ?>" >
                 <p>Please complete the fields below:</p>
                 <label for="dotMailer_email">Your email address*:</label></br>
                 <input class="email" type="text" id="dotMailer_email" name="dotMailer_email" /> </br>
@@ -173,15 +173,16 @@ class DM_Widget extends WP_Widget {
                 }
                 ?>
                 <?php
-                if (get_option('dm_API_data_fields') != "")
+                if (get_option('dm_API_data_fields') != "") {
                     $dmdatafields = get_option('dm_API_data_fields');
 
-                foreach ($dmdatafields as $key => $value) {
-                    writeFormLine($value['type'], $value['name'], $value['label'], $value['isRequired']);
-                    if (isset($formErrors[$value['name']])) {
-                        echo "<p class='error_message'>" . $formErrors[$value['name']] . "</p>";
-                    }
-                }
+					foreach ($dmdatafields as $key => $value) {
+						writeFormLine($value['type'], $value['name'], $value['label'], $value['isRequired']);
+						if (isset($formErrors[$value['name']])) {
+							echo "<p class='error_message'>" . $formErrors[$value['name']] . "</p>";
+						}
+					}
+				}
 
                 $dmaddressbooks = get_option('dm_API_address_books');
 

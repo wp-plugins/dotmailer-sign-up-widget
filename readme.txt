@@ -3,8 +3,8 @@ Contributors: dotMailer
 Donate link: http://www.dotmailer.co.uk
 Tags: email marketing, newsletter sign-up
 Requires at least: 3.0
-Tested up to: 3.6.1
-Stable tag: 3.1
+Tested up to: 3.8.3
+Stable tag: 3.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Add a "Subscribe to Newsletter" widget to your WordPress powered website.
 
 == Description ==
 
-Add the dotMailer sign-up form plugin to your site to allow your visitors to sign up to your newsletter and email marketing campaigns, sent using the dotMailer email marketing system. The email address of your new subscriber can be added to one or more dotMailer address books, which you can specify within your settings in WordPress. If you're not already a dotMailer user you can find out more about dotMailer at (http://www.dotmailer.co.uk)
+Add the dotMailer sign-up form plugin to your site to allow your visitors to sign up to your newsletter and email marketing campaigns, sent using the dotMailer email marketing system. The email address of your new subscriber can be added to one or more dotMailer address books, which you can specify within your settings in WordPress. If you're not already a dotMailer user you can find out more about dotMailer at (http://www.dotmailer.com)
 
 == Installation ==
 
@@ -71,9 +71,29 @@ A. There is an alternative way. Click on 'Screen Options' in the top right-hand 
 
 == Changelog ==
 
-The current version of this plugin is 3.1 
+3.2.1 (2014-05-16)
+
+* Fix: Now the user stays on the same page instead of being redirected to the home page after submission
+
+
+3.2 (2014-05-02)
+
+* Fix: Remove warning in the widget if no contact data was saved into the DB
+* Fix: Version number confusion
+* Mod: Now initial default messages are saved automatically to the database during plugin activation, so users need one step less to set it up properly.
+* Mod: Now user settings are not deleted on plugin deactivation. Settings are only deleted if you uninstall the plugin.
+
 
 == Upgrade Notice ==
+
+= 3.2.1 =
+* Fix: Now the user stays on the same page instead of being redirected to the home page after submission
+
+= 3.2 =
+* Fix: Remove warning in the widget if no contact data was saved into the DB
+* Fix: Version number confusion
+* Mod: Now initial default messages are save automatically to the database during plugin activation, so users need one step less to set it up properly.
+* Mod: Now user settings are not deleted on plugin deactivation. Settings are only deleted if you uninstall the plugin.
 
 = 3.1 =
 * Fix for closing php tag on dm_widget
