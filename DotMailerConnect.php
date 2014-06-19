@@ -63,13 +63,6 @@ class DotMailerConnect {
         $OptInType = "Single";
         $EmailType = "Html";
 
-
-
-
-
-
-
-
         $contact = array('Email' => $email, "AudienceType" => $AudienceType, "OptInType" => $OptInType,
             'EmailType' => $EmailType, "ID" => -1, "DataFields" => $datafields);
 
@@ -150,6 +143,22 @@ class DotMailerConnect {
 
             return false;
         }
+    }
+    
+    
+    function ApiCampaignSend( $userName, $password, $campaignID, $contactID ) {
+        try {
+			$newTime = date("c", strtotime( date( "Y-m-d H:i:s" ) . " -60 minutes"));
+			$params = array('username' => $userName, 'password' => $password, 'campaignId' => $campaignID, 'contactid' => $contactID, 'sendDate' => $newTime );
+            $result = $this->client->SendCampaignToContact($params);
+            return $result;
+        } catch (SoapFault $e) {
+            echo $e->faultstring;
+            return false;
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+            return false;
+        }    
     }
 
 }
