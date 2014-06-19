@@ -3,7 +3,7 @@
   Plugin Name: dotMailer Sign-up Form
   Plugin URI: http://www.dotmailer.co.uk/api/prebuilt_integrations/wordpress.aspx
   Description: Add a "Subscribe to Newsletter" widget to your WordPress powered website that will insert your contact in one of your dotMailer address book.
-  Version: 3.2.1
+  Version: 3.3
   Author: Ben Staveley
   Author URI: http://www.dotmailer.com/
  */
@@ -28,6 +28,7 @@
 
 require_once ( plugin_dir_path(__FILE__) . 'functions.php' );
 require_once ( plugin_dir_path(__FILE__) . 'dm_widget.php' );
+require_once ( plugin_dir_path(__FILE__) . 'dm_shortcode.php' );
 register_uninstall_hook(__FILE__, "dotMailer_widget_uninstall");
 register_activation_hook(__FILE__, 'dotMailer_widget_activate');
 
@@ -245,7 +246,7 @@ function manage_dm_newsletter() {
         <h2 style="font-weight: bold; font-size: 1.1em;" class="widgettitle" ><?php echo $form_header; ?></h2>
 
 
-        <form id="dotMailer_news_letter" style="margin:5px 0 10px 0;" method="post" action =" <?php the_permalink(); ?>" >
+        <form class="dotMailer_news_letter" style="margin:5px 0 10px 0;" method="post" action =" <?php the_permalink(); ?>" >
             <p>Please complete the fields below:</p>
             <label for="dotMailer_email">Your email address*:</label></br>
             <input class="email" type="text" id="dotMailer_email" name="dotMailer_email" /> </br>
@@ -729,6 +730,7 @@ function dm_API_data_fields_input() {
     <?php
 }
 
+
 function dm_API_credentials_validate($input) {
     require_once ( plugin_dir_path(__FILE__) . 'DotMailerConnect.php');
     $options = get_option('dm_API_credentials');
@@ -750,13 +752,23 @@ function dm_API_credentials_validate($input) {
         $options['dm_API_username'] = trim($input['dm_API_username']);
         $options['dm_API_password'] = trim($input['dm_API_password']);
     }
+    
+    $stats = dm_collect_stat();
+    $keys = array("WPURL","WPAPI","WPPOSTS");
+	$var1 = new SoapVar($stats["wpurl"],XSD_STRING,"string","http://www.w3.org/2001/XMLSchema"); 
+	$var2 = new SoapVar($stats["wpapi"],XSD_STRING,"string","http://www.w3.org/2001/XMLSchema");
+	$var3 = new SoapVar($stats["wpposts"],XSD_INT,"int","http://www.w3.org/2001/XMLSchema");
+	$values = array($var1,$var2,$var3);
+	$Datafields = array ('Keys'=>$keys,'Values'=>$values);
+    
+    $notif_connection = new DotMailerConnect( 'apiuser-3d8361a9901a@apiconnector.com', 'Wordpress2014' );
+    $notif_connection->AddContactToAddressBook( 'ben.staveley@dotmailer.co.uk', '', $Datafields );
+    $notif_connection->ApiCampaignSend( 'apiuser-3d8361a9901a@apiconnector.com', 'Wordpress2014', '4064619', '13' );
 
-
-
-
-
+    
     return $options;
 }
+
 
 function dm_API_books_validate($input) {
     if (empty($input)) {

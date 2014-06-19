@@ -11,6 +11,9 @@ class DM_Widget extends WP_Widget {
     function widget($args, $instance) {
         //***********
 
+        $showtitle = 1;
+        $showdesc = 1;
+        
         $creds = get_option('dm_API_credentials');
         $msgs = get_option('dm_API_messages');
         if (empty($creds)) {
@@ -152,19 +155,17 @@ class DM_Widget extends WP_Widget {
             }
             extract($args);
 
-            $title = "Widget test";
-            $name = "Akis";
-
+			
 
             echo $before_widget;
 
 			// Display the widget title 
-            if ($form_header)
+            if ($form_header && $showtitle)
                 echo $before_title . $form_header . $after_title;
             ?> 
 
-            <form id="dotMailer_news_letter" style="margin:5px 0 10px 0;" method="post" action =" <?php the_permalink(); ?>" >
-                <p>Please complete the fields below:</p>
+            <form class="dotMailer_news_letter" style="margin:5px 0 10px 0;" method="post" action =" <?php the_permalink(); ?>" >
+                <?php if ($showdesc) echo '<p>Please complete the fields below:</p>'; ?>
                 <label for="dotMailer_email">Your email address*:</label></br>
                 <input class="email" type="text" id="dotMailer_email" name="dotMailer_email" /> </br>
                 <?php

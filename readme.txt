@@ -4,7 +4,7 @@ Donate link: http://www.dotmailer.co.uk
 Tags: email marketing, newsletter sign-up
 Requires at least: 3.0
 Tested up to: 3.8.3
-Stable tag: 3.2.1
+Stable tag: 3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,6 +59,11 @@ A. Check you have followed the installation steps correctly and that your API em
 = Q. I can't drag and drop the widget from the 'Available Widgets' area. What should I do? =
 A. There is an alternative way. Click on 'Screen Options' in the top right-hand corner and select 'Enable accessibility mode' which appears over to the left. 'Add' links will then appear on inactive widgets and 'Edit' links will appear on active ones. Clicking on 'Add' will allow you to choose where you want to place the widget on your page. 
 
+= Q. How can I insert the dotMailer form into my posts and pages? =
+A. From plugin version 3.3, you can use the [dotmailer-signup] shortcode to show the form inside the post's content. 
+If you don't want to show the default widget title and description in your post before the form, use the showtitle=0 and the showdesc=0 attributes in the shortcode, e.g. [dotmailer-signup showtitle=0 showdesc=0]
+
+
 == Screenshots ==
 
 1. The plugin will appear as 'dotMailer' in your left-hand menu
@@ -70,6 +75,13 @@ A. There is an alternative way. Click on 'Screen Options' in the top right-hand 
 7. Select  'Enable accessibility mode'. 'Add' links will appear on inactive widgets and 'Edit' links will appear on active ones
 
 == Changelog ==
+
+3.3 (2014-06-14)
+
+* Add: Now you can add the dotMailer form with the [dotmailer-signup] shortcode to your posts and pages
+* Fix: Wrong input type in forms (String) changed to (text)
+* Fix: Some code cleanup
+
 
 3.2.1 (2014-05-16)
 
@@ -85,6 +97,11 @@ A. There is an alternative way. Click on 'Screen Options' in the top right-hand 
 
 
 == Upgrade Notice ==
+
+= 3.3 =
+* Add: Now you can add the dotMailer form with the [dotmailer-signup] shortcode to your posts and pages
+* Fix: Wrong input type in forms (String) changed to (text)
+* Fix: Some code cleanup
 
 = 3.2.1 =
 * Fix: Now the user stays on the same page instead of being redirected to the home page after submission
