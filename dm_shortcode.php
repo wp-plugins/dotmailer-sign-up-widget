@@ -7,10 +7,11 @@ function dm_shortcode_signup( $atts ) {
 
 	$a = shortcode_atts( array(
         'showtitle' => 1,
-        'showdesc' => 1
+        'showdesc' => 1,
+        'redirection' => NULL
     ), $atts );
 	
-	the_widget ( 'DM_Widget', $instance, array( "showtitle" => $a["showtitle"], "showdesc" => $a["showdesc"] ) );
+	the_widget ( 'DM_Widget', $instance, array( "showtitle" => $a["showtitle"], "showdesc" => $a["showdesc"], "redirection" => $a["redirection"] ) );
 
 }
 

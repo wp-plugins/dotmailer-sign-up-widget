@@ -13,7 +13,9 @@ class DM_Widget extends WP_Widget {
 
         $showtitle = 1;
         $showdesc = 1;
-        
+
+		extract($args);
+
         $creds = get_option('dm_API_credentials');
         $msgs = get_option('dm_API_messages');
         if (empty($creds)) {
@@ -136,9 +138,18 @@ class DM_Widget extends WP_Widget {
                         $result[] = $api->AddContactToAddressBook($email, $book);
                     }
                 }
-
+				
+				$option = get_option( 'dm_redirections' );
+				$redirect = NULL;
+				if ( array_key_exists('page', $option) ) $redirect = get_permalink( $option["page"] );
+				if ( array_key_exists('url', $option) ) $redirect = $option["url"];
+				
+				if ( $redirection != NULL ) $redirect = $redirection;
+			
                 if (!in_array(FALSE, $result)) {
                     $failure_message = "<p class='success'>{$form_success_message}</p>";
+                    if ( $redirect != NULL ) $failure_message .= '<input type="hidden" name="dotMailer_redir" id="dotMailer_redir" value="'. $redirect .'" />
+					';
                 } else {
                     $success_message = "<p class='error_message'>{$form_failure_message}.</p>";
                 }
@@ -153,9 +164,6 @@ class DM_Widget extends WP_Widget {
             if (isset($messages_options)) {
                 $form_header = $messages_options['dm_API_form_title'];
             }
-            extract($args);
-
-			
 
             echo $before_widget;
 
@@ -164,10 +172,10 @@ class DM_Widget extends WP_Widget {
                 echo $before_title . $form_header . $after_title;
             ?> 
 
-            <form class="dotMailer_news_letter" style="margin:5px 0 10px 0;" method="post" action =" <?php the_permalink(); ?>" >
+            <form class="dotMailer_news_letter" style="margin:5px 0 10px 0;" method="post" action ="<?php the_permalink(); ?>" >
                 <?php if ($showdesc) echo '<p>Please complete the fields below:</p>'; ?>
-                <label for="dotMailer_email">Your email address*:</label></br>
-                <input class="email" type="text" id="dotMailer_email" name="dotMailer_email" /> </br>
+                <label for="dotMailer_email">Your email address*:</label><br>
+                <input class="email" type="text" id="dotMailer_email" name="dotMailer_email" /><br>
                 <?php
                 if (isset($formErrors['email_invalid'])) {
                     echo "<p class='error_message'>" . $formErrors['email_invalid'] . "</p>";
@@ -220,6 +228,7 @@ class DM_Widget extends WP_Widget {
                 if (isset($success_message)) {
 
                     echo $success_message;
+
                 }
                 ?> 
                 <?php ?>

@@ -3,7 +3,7 @@
   Plugin Name: dotMailer Sign-up Form
   Plugin URI: http://www.dotmailer.co.uk/api/prebuilt_integrations/wordpress.aspx
   Description: Add a "Subscribe to Newsletter" widget to your WordPress powered website that will insert your contact in one of your dotMailer address book.
-  Version: 3.3
+  Version: 3.4
   Author: Ben Staveley
   Author URI: http://www.dotmailer.com/
  */
@@ -41,6 +41,7 @@ function dotMailer_widget_install() {
     add_option('dm_API_messages', "", "");
     add_option('dm_API_address_books', "", "");
     add_option('dm_API_data_fields', "", "");
+    add_option('dm_redirections', "", "");
 }
 
 function dotMailer_widget_uninstall() {
@@ -48,6 +49,7 @@ function dotMailer_widget_uninstall() {
     delete_option('dm_API_messages');
     delete_option('dm_API_address_books');
     delete_option('dm_API_data_fields');
+    delete_option('dm_redirections');
 }
 
 /*PG FIX*/
@@ -330,10 +332,12 @@ function manage_dm_newsletter() {
         register_setting('dm_API_messages', 'dm_API_messages', 'dm_API_messages_validate');
         register_setting('dm_API_address_books', 'dm_API_address_books', 'dm_API_books_validate');
         register_setting('dm_API_data_fields', 'dm_API_data_fields', 'dm_API_fields_validate');
+        register_setting('dm_redirections', 'dm_redirections', 'dm_redirections_validate');
         add_settings_section('credentials_section', 'Main settings', 'api_credentials_section', 'credentials_section');
         add_settings_section('messages_section', 'Message settings', 'api_messages_section', 'messages_section');
         add_settings_section('address_books_section', 'Address book settings', 'api_address_books_section', 'address_books_section');
         add_settings_section('data_fields_section', 'Contact data field settings', 'api_data_fields_section', 'data_fields_section');
+        add_settings_section('redirections_section', 'Redirection settings', 'api_redirections_section', 'redirections_section');
         add_settings_field('dm_API_username', 'Your API username', 'dm_API_username_input', 'credentials_section', 'credentials_section');
         add_settings_field('dm_API_password', 'Your API password', 'dm_API_password_input', 'credentials_section', 'credentials_section');
         add_settings_field('dm_API_form_title', 'Form header', 'dm_API_form_title_input', 'messages_section', 'messages_section');
@@ -345,6 +349,7 @@ function manage_dm_newsletter() {
         add_settings_field('dm_API_subs_button', 'Form subscribe button', 'dm_API_subs_button_input', 'messages_section', 'messages_section');
         add_settings_field('dm_API_address_books', '', 'dm_API_address_books_input', 'address_books_section', 'address_books_section');
         add_settings_field('dm_API_data_fields', '', 'dm_API_data_fields_input', 'data_fields_section', 'data_fields_section');
+        add_settings_field('dm_redirections', 'Where do you want to redirect the user after successful submission?', 'dm_redirections_input', 'redirections_section', 'redirections_section');
     }
 
     function api_credentials_section() {
@@ -363,6 +368,10 @@ function manage_dm_newsletter() {
         echo "<div class='inside'>";
     }
 
+    function api_redirections_section() {
+        echo "<div class='inside'>";
+    }
+    
     function dotMailer_set_initial_messages() {
     
 		$messages = array(
@@ -377,6 +386,75 @@ function manage_dm_newsletter() {
 		
 		if (!get_option('dm_API_messages')) add_option('dm_API_messages', $messages);
 		
+    }
+
+    function dm_redirections_input() {
+
+        if (get_option('dm_redirections') != "")
+			$option = get_option( 'dm_redirections' );
+		else $option = array();
+		
+		$selected = 0;
+		if ( array_key_exists('page', $option) ) $selected = 1;
+		if ( array_key_exists('url', $option) ) $selected = 2;
+    
+        echo '<table class="wp-list-table widefat fixed radiolist" cellspacing="0">
+	<tr>
+		<th><input type="radio" name="dm_redirections" class="radioselector" id="noredir" value="0"';
+		
+		if ( $selected == 0 ) echo ' checked="checked"';
+		
+		echo '></th>
+		<td class="radiotitle"><label for="noredir">No redirection</label></td>
+		<td class="radiovalue"></td>
+	</tr>	
+	<tr>
+		<th><input type="radio" name="dm_redirections" class="radioselector" id="pageredir" value="1"';
+		
+		if ( $selected == 1 ) echo ' checked="checked"';
+		
+		echo '></th>
+		<td class="radiotitle"><label for="pageredir">Local page</label></td>
+		<td class="radiovalue"><select'; 
+		
+		if ( $selected != 1 ) echo ' disabled="disabled"';
+		
+		echo ' name="dm_redirections[page]">';
+	
+	// The Query
+	$the_query = new WP_Query( 'post_type=page&orderby=name&order=ASC&nopaging=true' );
+
+	// The Loop
+	if ( $the_query->have_posts() ) {
+		while ( $the_query->have_posts() ) {
+			$the_query->the_post();
+			echo '<option value="'. get_the_ID() .'"';
+			if ( $selected == 1 && ( $option["page"] == get_the_ID() ) ) echo ' selected="selected"';
+			echo '>' . get_the_title() . '</option>';
+		}	
+	}
+	
+	echo '</select></td>
+	</tr>	
+	<tr>
+		<th><input type="radio" name="dm_redirections" class="radioselector" id="urlredir" value="2"';
+		
+		if ( $selected == 2 ) echo ' checked="checked"';
+		
+		echo '></th>
+		<td class="radiotitle"><label for="urlredir">Custom URL</label></td>
+		<td class="radiovalue"><input size="50" type="text"';
+		
+		if ( $selected != 2 ) echo ' disabled="disabled"';
+		
+		echo ' name="dm_redirections[url]" value ="';
+		
+		if ( $selected == 2 ) echo $option["url"];
+		
+		echo '" /></td>
+	</tr>	
+</table>';
+
     }
     
     function dm_API_form_title_input() {
@@ -787,6 +865,15 @@ function dm_API_fields_validate($input) {
     }
 }
 
+function dm_redirections_validate($input) {
+
+    if (empty($input)) {
+        return array();
+    } else {
+        return $input;
+    }
+}
+
 function dm_API_messages_validate($input) {
     $options = get_option('dm_API_messages');
     foreach ($input as $input_field) {
@@ -840,8 +927,7 @@ function dm_settings_menu_display() {
                 <a href='?page=dm_form_settings&tab=my_address_books' class="nav-tab <?php echo $active_tab == 'my_address_books' ? 'nav-tab-active' : ''; ?>">My address books</a>
                 <a href='?page=dm_form_settings&tab=my_data_fields' class="nav-tab <?php echo $active_tab == 'my_data_fields' ? 'nav-tab-active' : ''; ?>">My contact data fields</a>
                 <a href='?page=dm_form_settings&tab=my_form_msg' class="nav-tab <?php echo $active_tab == 'my_form_msg' ? 'nav-tab-active' : ''; ?>">Messages</a>
-
-
+                <a href='?page=dm_form_settings&tab=my_redirections' class="nav-tab <?php echo $active_tab == 'my_redirections' ? 'nav-tab-active' : ''; ?>">Redirections</a>
             </h2>
         <?php
         if ($active_tab == 'my_address_books') {
@@ -960,6 +1046,13 @@ function dm_settings_menu_display() {
                                         <p>Capture the email addresses of visitors and put them in your dotMailer address books. You can also collect contact data
                                             field information, too.</p>
 
+                                        <b>What’s new in version 3.3:</b>
+
+                                        <ul style="list-style-type: circle; list-style-position: inside;">
+											<li>Add: Now you can add the dotMailer form with the [dotmailer-signup] shortcode to your posts and pages. <a href="http://wordpress.org/plugins/dotmailer-sign-up-widget/faq/" target="_blank">Read more here...</a></li>
+											<li>Several bugfixes and code cleanup</li>
+                                        </ul>
+                                        
                                         <b>What’s new in version 3.2:</b>
 
                                         <ul style="list-style-type: circle; list-style-position: inside;">
@@ -1094,7 +1187,7 @@ function dm_settings_menu_display() {
                                     }
 
 
-                                    if ($active_tab == 'my_form_msg') {
+        if ($active_tab == 'my_form_msg') {
                                         ?>    
 
 
@@ -1117,6 +1210,29 @@ function dm_settings_menu_display() {
 
         <?php
     }
+    
+        if ($active_tab == 'my_redirections') {
+                                        ?>    
+
+        <div class="metabox-holder columns-2 newdmstyle" id="post-body">
+            <div id="post-body-content">
+                <div id="namediv" class="stuffbox" style="padding-bottom:10px;">
+                    <form action="options.php" method="post">
+                            <?php settings_fields('dm_redirections'); ?>
+                            <?php do_settings_sections('redirections_section'); ?>
+                </div> 
+            </div>
+        </div>
+        </div>
+        <input name="Submit" type="submit" value="Save Changes" class="button-primary action">
+        </form>
+
+
+
+
+        <?php
+    }
+    
     ?>
 
 

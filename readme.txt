@@ -4,7 +4,7 @@ Donate link: http://www.dotmailer.co.uk
 Tags: email marketing, newsletter sign-up
 Requires at least: 3.0
 Tested up to: 3.8.3
-Stable tag: 3.3
+Stable tag: 3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,10 +59,22 @@ A. Check you have followed the installation steps correctly and that your API em
 = Q. I can't drag and drop the widget from the 'Available Widgets' area. What should I do? =
 A. There is an alternative way. Click on 'Screen Options' in the top right-hand corner and select 'Enable accessibility mode' which appears over to the left. 'Add' links will then appear on inactive widgets and 'Edit' links will appear on active ones. Clicking on 'Add' will allow you to choose where you want to place the widget on your page. 
 
+= Q. Can I send the user to a custom Thank You page after subscription? =
+A. From plugin version 3.4 it is possible. You can find the redirection options under the Redirections tab in the plugin dashboard. Here you can set up 3 options:
+* No redirection (default): the user will stay on the same page where a short message will be displayed about the result of the subscription
+* Local page: you can select a page from your website that will be your dotMailer Thank you page
+* Custom URL: with this option you can redirect your user wherever you want to. If you choose this option, please use a valid URL starting with "http://" or "https://" here.
+
 = Q. How can I insert the dotMailer form into my posts and pages? =
 A. From plugin version 3.3, you can use the [dotmailer-signup] shortcode to show the form inside the post's content. 
-If you don't want to show the default widget title and description in your post before the form, use the showtitle=0 and the showdesc=0 attributes in the shortcode, e.g. [dotmailer-signup showtitle=0 showdesc=0]
+Shortcode parameters (works only when you use the form with a shortcode):
+* showtitle=0 - Hide the title of the widget
+* showdesc=0 - Hide the description under the title
+* redirection="URL" - Redirect the user to a custom URL after successful submission
 
+Example:
+[dotmailer-signup showtitle=0 showdesc=0 redirection="http://www.example.com"]
+(will show the form without a title and description and will redirect the user to www.example.com on success)
 
 == Screenshots ==
 
@@ -75,6 +87,12 @@ If you don't want to show the default widget title and description in your post 
 7. Select  'Enable accessibility mode'. 'Add' links will appear on inactive widgets and 'Edit' links will appear on active ones
 
 == Changelog ==
+
+3.4 (2014-07-03)
+
+* Add: Redirection options in plugin admin, now you can redirect your users to a Thank You page after subscription
+* Add: redirection attribute for the shortcode, which lets you use redirections locally from your form shortcodes
+
 
 3.3 (2014-06-14)
 
@@ -97,6 +115,11 @@ If you don't want to show the default widget title and description in your post 
 
 
 == Upgrade Notice ==
+
+= 3.4 =
+
+* Add: Redirection options in plugin admin, now you can redirect your users to a Thank You page after subscription
+* Add: redirection attribute for the shortcode, which lets you use redirections locally from your form shortcodes
 
 = 3.3 =
 * Add: Now you can add the dotMailer form with the [dotmailer-signup] shortcode to your posts and pages
