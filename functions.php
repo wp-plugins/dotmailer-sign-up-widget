@@ -89,6 +89,11 @@ function writeFormLine($fieldType, $fieldName, $fieldWording, $required) {
         echo "No <input class='$fieldType'  type='radio' id='$fieldName' name='datafields[{$fieldName}][]' value='FALSE'/>";
         echo "<input   type='hidden' id='$fieldName' name='datafields[{$fieldName}][]' value='$fieldType'/>";
         echo "<input   type='hidden' id='$required' name='datafields[{$fieldName}][]' value='{$required}'/>";
+    } elseif (strtolower($fieldType) == "string") {
+        echo "<label style='display:block;' for='{$fieldName}'>$fieldWording$asterisk</label>";
+        echo "<input style='display:block;' class='$fieldType'  type='text' id='$fieldName' name='datafields[{$fieldName}][]'/>";
+        echo "<input   type='hidden' id='$fieldName' name='datafields[{$fieldName}][]' value='$fieldType'/>";
+        echo "<input   type='hidden' id='$required' name='datafields[{$fieldName}][]' value='{$required}'/>";
     } else {
         echo "<label style='display:block;' for='{$fieldName}'>$fieldWording$asterisk</label>";
         echo "<input style='display:block;' class='$fieldType'  type='{$fieldType}' id='$fieldName' name='datafields[{$fieldName}][]'/>";

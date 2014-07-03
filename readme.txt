@@ -3,8 +3,8 @@ Contributors: dotMailer
 Donate link: http://www.dotmailer.co.uk
 Tags: email marketing, newsletter sign-up
 Requires at least: 3.0
-Tested up to: 3.6.1
-Stable tag: 3.1
+Tested up to: 3.8.3
+Stable tag: 3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Add a "Subscribe to Newsletter" widget to your WordPress powered website.
 
 == Description ==
 
-Add the dotMailer sign-up form plugin to your site to allow your visitors to sign up to your newsletter and email marketing campaigns, sent using the dotMailer email marketing system. The email address of your new subscriber can be added to one or more dotMailer address books, which you can specify within your settings in WordPress. If you're not already a dotMailer user you can find out more about dotMailer at (http://www.dotmailer.co.uk)
+Add the dotMailer sign-up form plugin to your site to allow your visitors to sign up to your newsletter and email marketing campaigns, sent using the dotMailer email marketing system. The email address of your new subscriber can be added to one or more dotMailer address books, which you can specify within your settings in WordPress. If you're not already a dotMailer user you can find out more about dotMailer at (http://www.dotmailer.com)
 
 == Installation ==
 
@@ -59,6 +59,23 @@ A. Check you have followed the installation steps correctly and that your API em
 = Q. I can't drag and drop the widget from the 'Available Widgets' area. What should I do? =
 A. There is an alternative way. Click on 'Screen Options' in the top right-hand corner and select 'Enable accessibility mode' which appears over to the left. 'Add' links will then appear on inactive widgets and 'Edit' links will appear on active ones. Clicking on 'Add' will allow you to choose where you want to place the widget on your page. 
 
+= Q. Can I send the user to a custom Thank You page after subscription? =
+A. From plugin version 3.4 it is possible. You can find the redirection options under the Redirections tab in the plugin dashboard. Here you can set up 3 options:
+* No redirection (default): the user will stay on the same page where a short message will be displayed about the result of the subscription
+* Local page: you can select a page from your website that will be your dotMailer Thank you page
+* Custom URL: with this option you can redirect your user wherever you want to. If you choose this option, please use a valid URL starting with "http://" or "https://" here.
+
+= Q. How can I insert the dotMailer form into my posts and pages? =
+A. From plugin version 3.3, you can use the [dotmailer-signup] shortcode to show the form inside the post's content. 
+Shortcode parameters (works only when you use the form with a shortcode):
+* showtitle=0 - Hide the title of the widget
+* showdesc=0 - Hide the description under the title
+* redirection="URL" - Redirect the user to a custom URL after successful submission
+
+Example:
+[dotmailer-signup showtitle=0 showdesc=0 redirection="http://www.example.com"]
+(will show the form without a title and description and will redirect the user to www.example.com on success)
+
 == Screenshots ==
 
 1. The plugin will appear as 'dotMailer' in your left-hand menu
@@ -71,9 +88,52 @@ A. There is an alternative way. Click on 'Screen Options' in the top right-hand 
 
 == Changelog ==
 
-The current version of this plugin is 3.1 
+3.4 (2014-07-03)
+
+* Add: Redirection options in plugin admin, now you can redirect your users to a Thank You page after subscription
+* Add: redirection attribute for the shortcode, which lets you use redirections locally from your form shortcodes
+
+
+3.3 (2014-06-14)
+
+* Add: Now you can add the dotMailer form with the [dotmailer-signup] shortcode to your posts and pages
+* Fix: Wrong input type in forms (String) changed to (text)
+* Fix: Some code cleanup
+
+
+3.2.1 (2014-05-16)
+
+* Fix: Now the user stays on the same page instead of being redirected to the home page after submission
+
+
+3.2 (2014-05-02)
+
+* Fix: Remove warning in the widget if no contact data was saved into the DB
+* Fix: Version number confusion
+* Mod: Now initial default messages are saved automatically to the database during plugin activation, so users need one step less to set it up properly.
+* Mod: Now user settings are not deleted on plugin deactivation. Settings are only deleted if you uninstall the plugin.
+
 
 == Upgrade Notice ==
+
+= 3.4 =
+
+* Add: Redirection options in plugin admin, now you can redirect your users to a Thank You page after subscription
+* Add: redirection attribute for the shortcode, which lets you use redirections locally from your form shortcodes
+
+= 3.3 =
+* Add: Now you can add the dotMailer form with the [dotmailer-signup] shortcode to your posts and pages
+* Fix: Wrong input type in forms (String) changed to (text)
+* Fix: Some code cleanup
+
+= 3.2.1 =
+* Fix: Now the user stays on the same page instead of being redirected to the home page after submission
+
+= 3.2 =
+* Fix: Remove warning in the widget if no contact data was saved into the DB
+* Fix: Version number confusion
+* Mod: Now initial default messages are save automatically to the database during plugin activation, so users need one step less to set it up properly.
+* Mod: Now user settings are not deleted on plugin deactivation. Settings are only deleted if you uninstall the plugin.
 
 = 3.1 =
 * Fix for closing php tag on dm_widget
