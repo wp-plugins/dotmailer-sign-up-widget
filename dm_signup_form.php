@@ -1,15 +1,15 @@
 <?php
 /*
-  Plugin Name: dotMailer Sign-up Form
+  Plugin Name: dotmailer Sign-up Form
   Plugin URI: http://www.dotmailer.co.uk/api/prebuilt_integrations/wordpress.aspx
-  Description: Add a "Subscribe to Newsletter" widget to your WordPress powered website that will insert your contact in one of your dotMailer address book.
-  Version: 3.4
+  Description: Add a "Subscribe to Newsletter" widget to your WordPress powered website that will insert your contact in one of your dotmailer address book.
+  Version: 3.4.1
   Author: Ben Staveley
   Author URI: http://www.dotmailer.com/
  */
 
 
-/*  Copyright 2014  dotMailer (email : support@dotMailer.co.uk)
+/*  Copyright 2014  dotmailer (email : support@dotmailer.com)
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -92,8 +92,8 @@ function settings_head_scripts() {
 function dm_create_menu_page() {
 
     add_menu_page(
-            'dotMailer Sign-up Form Options', // The title to be displayed on the corresponding page for this menu
-            'dotMailer', // The text to be displayed for this actual menu item
+            'dotmailer Sign-up Form Options', // The title to be displayed on the corresponding page for this menu
+            'dotmailer', // The text to be displayed for this actual menu item
             'manage_options', // Which type of users can see this menu
             'dm_form_settings', // The unique ID - that is, the slug - for this menu item
             'dm_settings_menu_display', // The name of the function to call when rendering the menu for this page
@@ -109,7 +109,7 @@ function manage_dm_newsletter() {
     if (empty($creds)) {
         ?>
         <div>
-        <?php echo "<p class='error_message'>The dotMailer sign-up plugin cannot be activated.Please use dotMailer settings from your admin area to customise your form.</p>"; ?>
+        <?php echo "<p class='error_message'>The dotmailer sign-up plugin cannot be activated.Please use dotmailer settings from your admin area to customise your form.</p>"; ?>
         </div>
             <?php
             return;
@@ -117,7 +117,7 @@ function manage_dm_newsletter() {
         if (empty($msgs)) {
             ?>
         <div>
-        <?php echo "<p class='error_message'>The dotMailer sign-up plugin cannot be activated.No messages have been set up.Please use the messages tab to set them up.</p>"; ?>
+        <?php echo "<p class='error_message'>The dotmailer sign-up plugin cannot be activated.No messages have been set up.Please use the messages tab to set them up.</p>"; ?>
         </div>
             <?php
             return;
@@ -914,8 +914,8 @@ function dm_settings_menu_display() {
 
         <div class="wrap">  
 
-            <img src="<?php echo plugins_url("/images/dmtarget.png", ( __FILE__)) ?>" alt="dotMailer" style="float:left; margin: 0 10px 0 10px; padding:9px 0px 4px 0;"  />
-            <h2 style="padding:9px 15px 4px 0;">dotMailer Sign-up Form</h2>  
+            <img src="<?php echo plugins_url("/images/dmtarget.png", ( __FILE__)) ?>" alt="dotmailer" style="float:left; margin: 0 10px 0 10px; padding:9px 0px 4px 0;"  />
+            <h2 style="padding:9px 15px 4px 0;">dotmailer Sign-up Form</h2>  
         <?php settings_errors(); ?>
         <?php
         $active_tab = isset($_GET['tab']) ? $_GET['tab'] : 'about_dm';
@@ -1043,13 +1043,13 @@ function dm_settings_menu_display() {
                                 <div id="namediv" class="stuffbox">
                                     <h3>What it does</h3>
                                     <div class="inside">
-                                        <p>Capture the email addresses of visitors and put them in your dotMailer address books. You can also collect contact data
+                                        <p>Capture the email addresses of visitors and put them in your dotmailer address books. You can also collect contact data
                                             field information, too.</p>
 
                                         <b>What’s new in version 3.3:</b>
 
                                         <ul style="list-style-type: circle; list-style-position: inside;">
-											<li>Add: Now you can add the dotMailer form with the [dotmailer-signup] shortcode to your posts and pages. <a href="http://wordpress.org/plugins/dotmailer-sign-up-widget/faq/" target="_blank">Read more here...</a></li>
+											<li>Add: Now you can add the dotmailer form with the [dotmailer-signup] shortcode to your posts and pages. <a href="http://wordpress.org/plugins/dotmailer-sign-up-widget/faq/" target="_blank">Read more here...</a></li>
 											<li>Several bugfixes and code cleanup</li>
                                         </ul>
                                         
@@ -1076,7 +1076,7 @@ function dm_settings_menu_display() {
                                             <li>New
                                                 setup advice</li>
                                             <li>The plugin
-                                                is now shown as ‘dotMailer’ in the WordPress left-hand menu</li>
+                                                is now shown as ‘dotmailer’ in the WordPress left-hand menu</li>
                                         </ul>
                                     </div>
                                 </div>						
@@ -1087,7 +1087,7 @@ function dm_settings_menu_display() {
                                     <h3>Setup advice</h3>
                                     <div class="inside">
                                         <p>To get you up and running, we have full setup
-                                            instructions on the <a href="https://dotmailer.zendesk.com/entries/23228992-Using-dotMailer-WordPress-sign-up-form-plugin-v2" target="_blank">dotMailer knowledge base</a>.</p>
+                                            instructions on the <a href="https://dotmailer.zendesk.com/entries/23228992-Using-dotMailer-WordPress-sign-up-form-plugin-v2" target="_blank">dotmailer knowledge base</a>.</p>
                                     </div>
                                 </div>						
                             </div>
@@ -1097,11 +1097,11 @@ function dm_settings_menu_display() {
                         <td width="10"></td>
                         <td width="350">
                             <div class="postbox" id="linksubmitdiv">
-                                <h3 style="cursor: default;">dotMailer</h3>
+                                <h3 style="cursor: default;">dotmailer</h3>
                                 <div class="inside">												
-                                    <img src="<?php echo plugins_url("/images/dmlogo.png", ( __FILE__)) ?>" style="display:block; margin-bottom:10px; " alt="dotMailer" style="float:left;" /> <p>Powerful email marketing made easy -
+                                    <img src="<?php echo plugins_url("/images/dmlogo.png", ( __FILE__)) ?>" style="display:block; margin-bottom:10px; " alt="dotmailer" style="float:left;" /> <p>Powerful email marketing made easy -
                                         with the most intuitive, easy to use email marketing platform you will find.
-                                        Grab yourself a free 30-day trial now from our website.&nbsp; Visit <a href="http://dotmailer.co.uk" target="_blank" >dotMailer.co.uk &gt;&gt;</a></p>
+                                        Grab yourself a free 30-day trial now from our website.&nbsp; Visit <a href="http://dotmailer.com" target="_blank" >dotmailer.com &gt;&gt;</a></p>
                                 </div>
                             </div>
                         </td>
