@@ -1,10 +1,10 @@
-=== dotMailer Sign-up Form Widget ===
+=== dotmailer Sign-up Form Widget ===
 Contributors: dotMailer
-Donate link: http://www.dotmailer.co.uk
+Donate link: http://www.dotmailer.com
 Tags: email marketing, newsletter sign-up
 Requires at least: 3.0
 Tested up to: 3.8.3
-Stable tag: 3.4
+Stable tag: 3.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,9 @@ Add a "Subscribe to Newsletter" widget to your WordPress powered website.
 
 == Description ==
 
-Add the dotMailer sign-up form plugin to your site to allow your visitors to sign up to your newsletter and email marketing campaigns, sent using the dotMailer email marketing system. The email address of your new subscriber can be added to one or more dotMailer address books, which you can specify within your settings in WordPress. If you're not already a dotMailer user you can find out more about dotMailer at (http://www.dotmailer.com)
+Add the dotmailer sign-up form plugin to your site and allow your visitors to sign up to your dotmailer-powered newsletter and email marketing campaigns. The email addresses of new subscribers can be added to multiple dotmailer address books. 
+
+If you're not already a dotmailer user you can find out more about us at http://www.dotmailer.com
 
 == Installation ==
 
@@ -22,11 +24,11 @@ If you don't already have v1, log into your WordPress account and follow these s
 
 1. Go to 'Plugins' in the left-hand menu
 2. Select 'Add New'
-3. Search for 'dotMailer Sign Up Widget'
+3. Search for 'dotmailer Sign Up Widget'
 4. Click on 'Install Now'
 5. When installed, click on 'Activate Plugin'
 
-The plugin will appear as 'dotMailer' in your left-hand menu.
+The plugin will appear as 'dotmailer' in your left-hand menu.
 
 For more detailed information on installation, find it at (https://dotmailer.zendesk.com/entries/23228992-Using-the-dotMailer-WordPress-sign-up-form-plugin-v2#install)
 
@@ -44,7 +46,6 @@ A. You will need to enable the SOAP extension in the php.ini file (your installe
 
 extension=php_soap.dll
 
-
 Depending on your host, you may not have access to this file. If you don't, you should contact your host to ask them to do this for you.
 
 = Q. Can I select more than one address book to sign contacts up to? =
@@ -54,27 +55,24 @@ A. Yes you can. This latest version of the plugin allows you to put addresses in
 A. Yes they can.
 
 = Q. My contacts are not appearing in my address book. Why is this? =
-A. Check you have followed the installation steps correctly and that your API email and API password appear exactly as they do in your dotMailer account. Remember that the API email is automatically generated and should not be changed. 
+A. Check you have followed the installation steps correctly and that your API email and API password appear exactly as they do in your dotmailer account. Remember that the API email is automatically generated and should not be changed.
 
 = Q. I can't drag and drop the widget from the 'Available Widgets' area. What should I do? =
-A. There is an alternative way. Click on 'Screen Options' in the top right-hand corner and select 'Enable accessibility mode' which appears over to the left. 'Add' links will then appear on inactive widgets and 'Edit' links will appear on active ones. Clicking on 'Add' will allow you to choose where you want to place the widget on your page. 
+A. There is an alternative way. Click on 'Screen Options' in the top right-hand corner and select 'Enable accessibility mode' which appears over to the left. 'Add' links will then appear on inactive widgets and 'Edit' links will appear on active ones. Clicking on 'Add' will allow you to choose where you want to place the widget on your page.
 
 = Q. Can I send the user to a custom Thank You page after subscription? =
-A. From plugin version 3.4 it is possible. You can find the redirection options under the Redirections tab in the plugin dashboard. Here you can set up 3 options:
-* No redirection (default): the user will stay on the same page where a short message will be displayed about the result of the subscription
-* Local page: you can select a page from your website that will be your dotMailer Thank you page
-* Custom URL: with this option you can redirect your user wherever you want to. If you choose this option, please use a valid URL starting with "http://" or "https://" here.
+A. From plugin version 3.4 it is possible. You can find the redirection options under the Redirections tab in the plugin dashboard. Here you can set up 3 options: * No redirection (default): the user will stay on the same page where a short message will be displayed about the result of the subscription * Local page: you can select a page from your website that will be your dotmailer Thank you page * Custom URL: with this option you can redirect your user wherever you want to. If you choose this option, please use a valid URL starting with "http://" or "https://" here.
 
-= Q. How can I insert the dotMailer form into my posts and pages? =
-A. From plugin version 3.3, you can use the [dotmailer-signup] shortcode to show the form inside the post's content. 
-Shortcode parameters (works only when you use the form with a shortcode):
-* showtitle=0 - Hide the title of the widget
-* showdesc=0 - Hide the description under the title
-* redirection="URL" - Redirect the user to a custom URL after successful submission
+= Q. How can I insert the dotmailer form into my posts and pages? =
+A. From plugin version 3.3, you can use the [dotmailer-signup] shortcode to show the form inside the post's content. Shortcode parameters (works only when you use the form with a shortcode): 
 
-Example:
-[dotmailer-signup showtitle=0 showdesc=0 redirection="http://www.example.com"]
-(will show the form without a title and description and will redirect the user to www.example.com on success)
+showtitle=0 - Hide the title of the widget 
+
+showdesc=0 - Hide the description under the title 
+
+redirection="URL" - Redirect the user to a custom URL after successful submission
+
+Example: [dotmailer-signup showtitle=0 showdesc=0 redirection="http://www.example.com"] (will show the form without a title and description and will redirect the user to http://www.example.com on success)
 
 == Screenshots ==
 
@@ -87,6 +85,16 @@ Example:
 7. Select  'Enable accessibility mode'. 'Add' links will appear on inactive widgets and 'Edit' links will appear on active ones
 
 == Changelog ==
+
+3.4.2 (2015-07-01)
+
+* Fix: position of the shortcode output wasn't correct in the previous versions
+
+
+3.4.1 (2014-07-17)
+
+* All strings from 'dotMailer' are changed to 'dotmailer' due to a branding change
+
 
 3.4 (2014-07-03)
 
