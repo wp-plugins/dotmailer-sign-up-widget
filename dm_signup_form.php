@@ -3,7 +3,7 @@
   Plugin Name: dotmailer Sign-up Form
   Plugin URI: http://www.dotmailer.co.uk/api/prebuilt_integrations/wordpress.aspx
   Description: Add a "Subscribe to Newsletter" widget to your WordPress powered website that will insert your contact in one of your dotmailer address book.
-  Version: 3.4.1
+  Version: 3.4.2
   Author: Ben Staveley
   Author URI: http://www.dotmailer.com/
  */
